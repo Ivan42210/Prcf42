@@ -4,14 +4,30 @@
     box-sizing: border-box;
 }
 
+body{
+    background-color: #fc0102;
+}
+
 .header{
     width: 100%;
     margin: 10px auto;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    height: 300px;
 }
 
 .header > img {
     width: 50px;
+}
+
+.banner > img {
+    object-fit: cover;
+    height: 300px;
+}
+
+svg{
+    width: 40px;
+    filter: brightness(0) saturate(100%) invert(99%) sepia(99%) saturate(0%) hue-rotate(148deg) brightness(103%) contrast(100%);
 }
