@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box !important;
 }
 
 body{
@@ -9,22 +9,28 @@ body{
 }
 
 .header{
-    width: 100%;
-    margin: 10px auto;
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
-    height: 300px;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
 .header > img {
     width: 50px;
 }
 
+.banner{
+    position: relative;
+    width: 100%;
+}
+
 .banner > img {
     object-fit: cover;
     height: 300px;
+    width: 100%;
 }
 
 svg{
