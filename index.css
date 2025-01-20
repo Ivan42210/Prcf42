@@ -8,6 +8,8 @@ body{
     background-color: #fc0102;
 }
 
+
+
 .header{
     display: flex;
     align-items: center;
@@ -16,10 +18,11 @@ body{
     top: 0;
     left: 0;
     right: 0;
+    bottom: 0;
 }
 
 .header > img {
-    width: 50px;
+    width: 70px;
 }
 
 .banner{
@@ -29,9 +32,14 @@ body{
 
 .banner > img {
     object-fit: cover;
-    height: 300px;
+    height: 45vh;
     width: 100%;
 }
+
+.button_section{
+    margin: 1em;
+}
+
 
 svg{
     width: 40px;
