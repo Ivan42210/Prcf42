@@ -1,7 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box !important;
+    font-family: "Roboto", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
 }
 
 body{
@@ -34,14 +42,68 @@ body{
     object-fit: cover;
     height: 45vh;
     width: 100%;
+    overflow: hidden;
 }
 
 .button_section{
     margin: 1em;
 }
 
+h3{
+    text-align: center;
+}
+
+.soc_med_btn{
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1em auto;
+}
+
 
 svg{
-    width: 40px;
     filter: brightness(0) saturate(100%) invert(99%) sepia(99%) saturate(0%) hue-rotate(148deg) brightness(103%) contrast(100%);
 }
+
+.btn{
+    width: 50px;
+}
+
+.ic_btn{
+    position: relative;
+}
+
+.prcf_btn{
+    display: flex;
+    width: 50%;
+    margin: 1.5em auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ic_btn > img {
+    width: 50px;
+}
+
+.jrcf_btn > img {
+    width: 50px;
+}
+
+.form_btn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+}
+
+.btn_form{
+    background: transparent;
+    box-shadow: 0 0 0 3px white;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 40px;
+    border-style: none;
+}
+
