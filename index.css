@@ -70,9 +70,7 @@ svg{
     width: 50px;
 }
 
-.ic_btn{
-    position: relative;
-}
+
 
 .prcf_btn{
     display: flex;
@@ -82,11 +80,11 @@ svg{
     align-items: center;
 }
 
-.ic_btn > img {
+.ic_btn > a > img {
     width: 50px;
 }
 
-.jrcf_btn > img {
+.jrcf_btn > a > img {
     width: 50px;
 }
 
