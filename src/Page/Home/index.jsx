@@ -10,6 +10,7 @@ export default function Home (){
     return(
         <>
             <Banner image={image} alt={'bannière PRCF'} logo={logo} altLogo={'logo du PRCF 42'}/>
+            
         </>
     )
 }
