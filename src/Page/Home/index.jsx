@@ -8,8 +8,11 @@ import logo from '../../assets/prcf42.png';
 import icLogo from '../../assets/cropped-Logo-seul.png';
 import jrcfLogo from '../../assets/jrcf-logo-768x768.png';
 import {Link} from 'react-router-dom';  // import de Link pour les liens
+import { useState } from 'react';
 
 export default function Home() {
+
+    const [isActive, setActive] = useState(false);
 
     const style = {
         image:{
