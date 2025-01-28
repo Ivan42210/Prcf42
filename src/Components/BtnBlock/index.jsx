@@ -1,9 +1,13 @@
+import PropTypes from 'prop-types';
+
 export default function BtnBlock ({children}){
 
     const style = {
+        width: '50%',
         display: 'flex',
-        margin: '1em',
-        justifyContent: 'space-between'
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        margin: '1em auto',
     }
 
     return(
@@ -14,3 +18,8 @@ export default function BtnBlock ({children}){
         </>
     )
 }
+
+BtnBlock.propTypes = {
+    children: PropTypes.node.isRequired
+}
+

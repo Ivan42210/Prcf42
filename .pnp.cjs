@@ -29,6 +29,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["@fortawesome/fontawesome-svg-core", "npm:6.7.2"],\
+            ["@fortawesome/free-brands-svg-icons", "npm:6.7.2"],\
             ["@fortawesome/free-solid-svg-icons", "npm:6.7.2"],\
             ["@fortawesome/react-fontawesome", "virtual:b3d83455251cc78b2f24a7fd8eb27f89707d3ab5ceb9ea224719819dea7cbce6dfb4460a617282326d7c1c31c05f6bdd0d157b9e1e067998ca76425385321dbe#npm:0.2.2"],\
             ["@types/react", "npm:18.3.18"],\
@@ -38,6 +39,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react", "virtual:b3d83455251cc78b2f24a7fd8eb27f89707d3ab5ceb9ea224719819dea7cbce6dfb4460a617282326d7c1c31c05f6bdd0d157b9e1e067998ca76425385321dbe#npm:7.37.4"],\
             ["eslint-plugin-react-hooks", "virtual:b3d83455251cc78b2f24a7fd8eb27f89707d3ab5ceb9ea224719819dea7cbce6dfb4460a617282326d7c1c31c05f6bdd0d157b9e1e067998ca76425385321dbe#npm:4.6.2"],\
             ["eslint-plugin-react-refresh", "virtual:b3d83455251cc78b2f24a7fd8eb27f89707d3ab5ceb9ea224719819dea7cbce6dfb4460a617282326d7c1c31c05f6bdd0d157b9e1e067998ca76425385321dbe#npm:0.3.5"],\
+            ["prop-types", "npm:15.8.1"],\
             ["react", "npm:18.3.1"],\
             ["react-dom", "virtual:b3d83455251cc78b2f24a7fd8eb27f89707d3ab5ceb9ea224719819dea7cbce6dfb4460a617282326d7c1c31c05f6bdd0d157b9e1e067998ca76425385321dbe#npm:18.3.1"],\
             ["react-router-dom", "virtual:b3d83455251cc78b2f24a7fd8eb27f89707d3ab5ceb9ea224719819dea7cbce6dfb4460a617282326d7c1c31c05f6bdd0d157b9e1e067998ca76425385321dbe#npm:7.1.3"],\
@@ -579,6 +581,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@fortawesome-fontawesome-svg-core-npm-6.7.2-e22b101297-b3c269545d.zip/node_modules/@fortawesome/fontawesome-svg-core/",\
           "packageDependencies": [\
             ["@fortawesome/fontawesome-svg-core", "npm:6.7.2"],\
+            ["@fortawesome/fontawesome-common-types", "npm:6.7.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@fortawesome/free-brands-svg-icons", [\
+        ["npm:6.7.2", {\
+          "packageLocation": "./.yarn/cache/@fortawesome-free-brands-svg-icons-npm-6.7.2-efb785a9d7-1583c684e3.zip/node_modules/@fortawesome/free-brands-svg-icons/",\
+          "packageDependencies": [\
+            ["@fortawesome/free-brands-svg-icons", "npm:6.7.2"],\
             ["@fortawesome/fontawesome-common-types", "npm:6.7.2"]\
           ],\
           "linkType": "HARD"\
@@ -3355,6 +3367,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["prcf42", "workspace:."],\
             ["@fortawesome/fontawesome-svg-core", "npm:6.7.2"],\
+            ["@fortawesome/free-brands-svg-icons", "npm:6.7.2"],\
             ["@fortawesome/free-solid-svg-icons", "npm:6.7.2"],\
             ["@fortawesome/react-fontawesome", "virtual:b3d83455251cc78b2f24a7fd8eb27f89707d3ab5ceb9ea224719819dea7cbce6dfb4460a617282326d7c1c31c05f6bdd0d157b9e1e067998ca76425385321dbe#npm:0.2.2"],\
             ["@types/react", "npm:18.3.18"],\
@@ -3364,6 +3377,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react", "virtual:b3d83455251cc78b2f24a7fd8eb27f89707d3ab5ceb9ea224719819dea7cbce6dfb4460a617282326d7c1c31c05f6bdd0d157b9e1e067998ca76425385321dbe#npm:7.37.4"],\
             ["eslint-plugin-react-hooks", "virtual:b3d83455251cc78b2f24a7fd8eb27f89707d3ab5ceb9ea224719819dea7cbce6dfb4460a617282326d7c1c31c05f6bdd0d157b9e1e067998ca76425385321dbe#npm:4.6.2"],\
             ["eslint-plugin-react-refresh", "virtual:b3d83455251cc78b2f24a7fd8eb27f89707d3ab5ceb9ea224719819dea7cbce6dfb4460a617282326d7c1c31c05f6bdd0d157b9e1e067998ca76425385321dbe#npm:0.3.5"],\
+            ["prop-types", "npm:15.8.1"],\
             ["react", "npm:18.3.1"],\
             ["react-dom", "virtual:b3d83455251cc78b2f24a7fd8eb27f89707d3ab5ceb9ea224719819dea7cbce6dfb4460a617282326d7c1c31c05f6bdd0d157b9e1e067998ca76425385321dbe#npm:18.3.1"],\
             ["react-router-dom", "virtual:b3d83455251cc78b2f24a7fd8eb27f89707d3ab5ceb9ea224719819dea7cbce6dfb4460a617282326d7c1c31c05f6bdd0d157b9e1e067998ca76425385321dbe#npm:7.1.3"],\

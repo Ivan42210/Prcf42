@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 
 export default function Banner ({image, alt, logo, altLogo}){
 
@@ -25,7 +26,6 @@ export default function Banner ({image, alt, logo, altLogo}){
         logoStyle: {
             width: '70px',
         }
-
     }
 
     return(
@@ -40,12 +40,9 @@ export default function Banner ({image, alt, logo, altLogo}){
     )
 }
 
-
-/*
-   display: 'flex',
-            justifyContent: 'center',
-            alignItems:'center',
-            width: '100%',
-            height: '40vh',
-            background: 'black' 
- */
+Banner.propTypes = {
+    image: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired,
+    logo: PropTypes.string.isRequired,
+    altLogo: PropTypes.string.isRequired
+}
