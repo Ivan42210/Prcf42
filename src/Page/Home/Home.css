@@ -6,3 +6,22 @@ h3{
     text-align: center;
     margin: 1em auto
 }
+
+
+@media screen and (min-width: 768px){
+    main{
+        max-width: 500px;
+        margin: 3em auto;
+    }
+
+    .contact-btn{
+        cursor: pointer;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .contact-btn:hover{
+        background-color: white !important;
+        color: #fc0102;
+    }
+    
+}

@@ -21,10 +21,24 @@ export default function Form({ onClose, isVisible }) {
         if (isVisible) {
             setIsHidden(false);
         } else {
-            const timer = setTimeout(() => setIsHidden(true), 500); // Correspond à la durée de l'animation
+            const timer = setTimeout(() => {
+                setIsHidden(true);
+                resetForm(); // Réinitialiser le formulaire lorsque le formulaire est fermé
+            }, 500); // Correspond à la durée de l'animation
             return () => clearTimeout(timer);
         }
     }, [isVisible]);
+
+    const resetForm = () => {
+        setFormData({
+            nom: '',
+            prenom: '',
+            email: '',
+            message: '',
+            choice: 'informer'
+        });
+        setErrors({});
+    };
 
     const nameRegex = /^[a-zA-Z\s]+$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

@@ -64,7 +64,7 @@ export default function Home() {
                     </Link>
                 </BtnBlock>
                 <div style={style.formBtnDiv}>
-                    <button style={style.contactBtn} onClick={toggleForm}>Contact</button>
+                    <button className='contact-btn' style={style.contactBtn} onClick={toggleForm}>Contact</button>
                 </div>
                 <Form onClose={toggleForm} isVisible={isFormVisible} />
             </main>
