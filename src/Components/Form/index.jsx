@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { API_URL } from '../../env';
 import './Form.css'; // Assurez-vous de créer un fichier CSS pour le style
 
-export default function Form({ onClose }) {
+export default function Form({ onClose, isVisible }) {
     const [formData, setFormData] = useState({
         nom: '',
         prenom: '',
@@ -14,6 +15,16 @@ export default function Form({ onClose }) {
     });
 
     const [errors, setErrors] = useState({});
+    const [isHidden, setIsHidden] = useState(!isVisible);
+
+    useEffect(() => {
+        if (isVisible) {
+            setIsHidden(false);
+        } else {
+            const timer = setTimeout(() => setIsHidden(true), 500); // Correspond à la durée de l'animation
+            return () => clearTimeout(timer);
+        }
+    }, [isVisible]);
 
     const nameRegex = /^[a-zA-Z\s]+$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -32,19 +43,42 @@ export default function Form({ onClose }) {
         return newErrors;
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const validationErrors = validate();
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
         } else {
-            alert('Votre message a été envoyé.');
-            onClose();
+            try {
+                const response = await fetch(`${API_URL}/api/send-email`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        firstName: formData.prenom,
+                        lastName: formData.nom,
+                        email: formData.email,
+                        subject: formData.choice, // Utiliser la valeur du bouton radio comme sujet
+                        message: formData.message,
+                    }),
+                });
+                const result = await response.json();
+                if (response.ok) {
+                    alert('Votre message a été envoyé avec succès.');
+                    onClose();
+                } else {
+                    alert(`Erreur: ${result.message}`);
+                }
+            } catch (error) {
+                console.error('Erreur lors de l\'envoi de l\'email :', error);
+                alert('Erreur lors de l\'envoi de l\'email.');
+            }
         }
     };
 
     return (
-        <section id="contact_form" className="form_section">
+        <section id="contact_form" className={`form_section ${!isVisible ? 'hidden' : ''}`} style={{ display: isHidden ? 'none' : 'flex' }}>
             <form onSubmit={handleSubmit}>
                 <div className="form">
                     <input
@@ -107,5 +141,6 @@ export default function Form({ onClose }) {
 }
 
 Form.propTypes = {
-    onClose: PropTypes.func.isRequired
+    onClose: PropTypes.func.isRequired,
+    isVisible: PropTypes.bool.isRequired
 };

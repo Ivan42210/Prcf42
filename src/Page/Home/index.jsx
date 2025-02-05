@@ -66,7 +66,7 @@ export default function Home() {
                 <div style={style.formBtnDiv}>
                     <button style={style.contactBtn} onClick={toggleForm}>Contact</button>
                 </div>
-                {isFormVisible && <Form onClose={toggleForm} />}
+                <Form onClose={toggleForm} isVisible={isFormVisible} />
             </main>
         </>
     );
