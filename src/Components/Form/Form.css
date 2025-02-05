@@ -3,6 +3,7 @@
         opacity: 0;
         transform: translateY(-20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -14,6 +15,7 @@
         opacity: 1;
         transform: translateY(0);
     }
+
     to {
         opacity: 0;
         transform: translateY(-20px);
@@ -37,7 +39,7 @@
     animation: fadeOut 0.5s forwards;
 }
 
-.form_section > svg {
+.form_section>svg {
     width: 30px;
     position: absolute;
     top: 1em;
@@ -60,11 +62,13 @@ form {
     gap: 1em;
 }
 
-input[type="text"], input[type="email"] {
+input[type="text"],
+input[type="email"] {
     width: 100% !important;
     padding: 10px;
     border-radius: 10px;
     border-style: none;
+    color: black;
 }
 
 .choice_area {
