@@ -1,0 +1,6 @@
+[build]
+  command = "yarn build"
+  publish = "dist"
+
+[context.production.environment]
+  NODE_VERSION = "20.0.0"
