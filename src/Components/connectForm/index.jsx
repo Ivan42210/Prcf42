@@ -1,24 +1,30 @@
-import React from 'react'; // Ajoutez
+import './ConnectForm.css'
+import { useState } from 'react';
 import { login } from "../../Services/authServices";
 
 export default function ConnectForm() {
+    const [message, setMessage] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const email = e.target[0].value;
         const password = e.target[1].value;
-        login(email, password);
+        const { user, error } = await login(email, password);
+        if (error) {
+            setMessage(`Erreur: ${error.message}`);
+        } else {
+            setMessage(`Connexion réussie: ${user.email}`);
+        }
     }
-
 
     return (
         <div>
-            <h1>Connectez-vous</h1>
-            <form>
-                <input type="text" placeholder="email"/>
-                <input type="password" placeholder="Mot de passe"/>
-                <button type="submit" onClick={handleSubmit}>Se connecter</button>
+            <form onSubmit={handleSubmit} className='form_body'>
+                <input type="text" placeholder="email" />
+                <input type="password" placeholder="Mot de passe" />
+                <button type="submit">Se connecter</button>
             </form>
+            {message && <p>{message}</p>}
         </div>
     )
 }

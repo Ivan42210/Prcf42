@@ -1,13 +1,15 @@
-import ConnectForm from "../../Components/connectForm";
+import './ConnexionPage.css';
+import ConnectForm from '../../Components/connectForm';
+
 
 export default function ConnexionPage() {
     return(
-        <>
-            <h2>Bienvenu camarade</h2>
+        <section className="connexion_body">
+            <h2>Bonjour camarade</h2>
 
             <section>
-                <ConnectForm />
+                <ConnectForm/>
             </section>
-        </>
+        </section>
     )
 }

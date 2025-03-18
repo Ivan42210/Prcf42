@@ -1,11 +1,11 @@
 import { supabase } from "../supabaseClient";
 
 const login = async (email, password) => {
-  const { user, error } = await supabase.auth.signIn({
+  const { data, error } = await supabase.auth.signInWithPassword({
     email,
     password,
   });
-  return { user, error };
+  return { user: data.user, error };
 }
 
 const logout = async () => {
@@ -13,4 +13,4 @@ const logout = async () => {
   return { error };
 }
 
-export {login, logout};
+export { login, logout };

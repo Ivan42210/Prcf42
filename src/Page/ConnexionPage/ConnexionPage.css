@@ -1,0 +1,15 @@
+.connexion_body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1em;
+}
+
+.connexion_body > h2{
+    font-size: 2em;
+    font-weight: 600;
+    color: #ffffff;
+}
