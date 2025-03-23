@@ -1,9 +1,11 @@
-import './ConnectForm.css'
+import './ConnectForm.css';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { login } from "../../Services/authServices";
 
 export default function ConnectForm() {
     const [message, setMessage] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -14,11 +16,13 @@ export default function ConnectForm() {
             setMessage(`Erreur: ${error.message}`);
         } else {
             setMessage(`Connexion réussie: ${user.email}`);
+            navigate('/dashboard'); 
         }
     }
 
     return (
         <div>
+            <h1>Connectez-vous</h1>
             <form onSubmit={handleSubmit} className='form_body'>
                 <input type="text" placeholder="email" />
                 <input type="password" placeholder="Mot de passe" />
