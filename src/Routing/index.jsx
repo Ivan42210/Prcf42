@@ -13,7 +13,7 @@ export default function Routing() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/connect" element={<ConnexionPage />} />
-          <Route path="/dashboard/*" element={<ProtectedRoute element={<DashboardPage />} />} />
+          <Route path="/dashboard" element={<ProtectedRoute element={<DashboardPage />} />} />
         </Routes>
       </Router>
     </AuthProvider>
