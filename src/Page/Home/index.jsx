@@ -44,11 +44,9 @@ export default function Home() {
         contactBtn: {
             width: '50%',
             margin: '1em auto',
-            fontWeight: '600',
-            fontSize: '20px',
             background: 'transparent',
-            boxShadow: '0 0 0 3px white',
             padding: '10px',
+            fontSize: '1.2em',
             borderRadius: '40px',
             borderStyle: 'none',
         }
@@ -66,26 +64,26 @@ export default function Home() {
                     <h3 style={style.subtitle}>Pour reconstruire un parti communiste</h3>
                 </div>
                  <BtnBlock>
-                      <div>
-                        <button className='contact-btn color_red' style={style.contactBtn} onClick={toggleForm}>
-                        <FontAwesomeIcon icon={faEnvelope} size='1x' />
-                    </button>
-                      </div>
-                    <Link to='https://jrcf.fr' className='btn-jdm'>
-                        <p className='text-btn-jdm'>Jeunesse du monde</p>
-                    </Link>
-                </BtnBlock>
-                <BtnBlock>
-                    <Link to='https://x.com/Ocf_Loire_42?s=20' className='color_red'>
-                        <FontAwesomeIcon icon={faSquareXTwitter} size='3x' />
-                    </Link>
-                    <Link to='https://www.instagram.com/ocf.42?igsh=MW82dXRoMTk1aHI4NQ=='className='color_red'>
-                        <FontAwesomeIcon icon={faInstagram} size='3x'/>
-                    </Link>
-                    <Link to='https://www.tiktok.com/@.ocf42?_r=1&_t=ZN-92uPF6LAef8' className='color_red'>
-                        <FontAwesomeIcon icon={faTiktok} size='3x' />
-                    </Link>
-                </BtnBlock>
+    <div>
+        <button className='contact-btn color_red' style={style.contactBtn} onClick={toggleForm}>
+            <FontAwesomeIcon icon={faEnvelope} size='3x' />
+        </button>
+    </div>
+    <Link to='https://jeunessedumonde.fr/' className='btn-jdm'>
+        <p className='text-btn-jdm'>Jeunesse du monde</p>
+    </Link>
+</BtnBlock>
+<BtnBlock>
+    <Link to='https://x.com/Ocf_Loire_42?s=20' className='color_red text-size'>
+        <FontAwesomeIcon icon={faSquareXTwitter} size='3x' />
+    </Link>
+    <Link to='https://www.instagram.com/ocf.42?igsh=MW82dXRoMTk1aHI4NQ==' className='color_red text-size'>
+        <FontAwesomeIcon icon={faInstagram} size='3x'/>
+    </Link>
+    <Link to='https://www.tiktok.com/@.ocf42?_r=1&_t=ZN-92uPF6LAef8' className='color_red text-size'>
+        <FontAwesomeIcon icon={faTiktok} size='3x' />
+    </Link>
+</BtnBlock>
                 <div style={style.formBtnDiv}>
                   
                 </div>

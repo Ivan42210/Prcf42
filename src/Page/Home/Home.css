@@ -38,6 +38,10 @@ h3{
 .contact-btn > svg{
     font-size: 3em;
 }
+
+.text-size{
+    font-size: 1.2em;
+}
    
 
 @media screen and (min-width: 768px) {
@@ -52,8 +56,5 @@ h3{
         transition: all 0.5s ease-in-out;
     }
 
-    .contact-btn:hover {
-        background-color: #CA2E2F !important;
-        color: white !important;
-    }
+  
 }

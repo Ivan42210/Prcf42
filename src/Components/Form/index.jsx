@@ -92,7 +92,7 @@ export default function Form({ onClose, isVisible }) {
     };
 
     return (
-        <section id="contact_form" className={`form_section ${!isVisible ? 'hidden' : ''}`} style={{ display: isHidden ? 'none' : 'flex' }}>
+        <section id="contact_form" className={`form_section color_white ${!isVisible ? 'hidden' : ''}`} style={{ display: isHidden ? 'none' : 'flex' }}>
             <form onSubmit={handleSubmit}>
                 <div className="form">
                     <input
@@ -146,7 +146,7 @@ export default function Form({ onClose, isVisible }) {
                         onChange={handleChange}
                     />
                     {errors.message && <p className="error">{errors.message}</p>}
-                    <button type="submit" id="send_btn" className="send_btn">Envoyer</button>
+                    <button type="submit" id="send_btn" className="send_btn color_white">Envoyer</button>
                 </div>
             </form>
             <FontAwesomeIcon icon={faXmark} className="close_btn" onClick={onClose} />
