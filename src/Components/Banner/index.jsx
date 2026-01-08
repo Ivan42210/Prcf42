@@ -1,4 +1,3 @@
-
 import PropTypes from 'prop-types';
 
 export default function Banner ({image, alt}){
@@ -7,25 +6,24 @@ export default function Banner ({image, alt}){
         section: {
             position: 'relative',
             width: '100%',
-            height: '45vh',
+            minHeight: '45vh', // minHeight au lieu de height
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            padding: '20px 0',
         },
         bannerImg: {
-            objectFit: 'cover',
+            objectFit: 'contain',
             width: '95%',
-            overflow: 'hidden',
+            maxHeight: '45vh',
+            borderRadius: '10px',
         },
     }
 
     return(
-        <>
-            <section style={style.section}>
-                <img src={image} alt={alt}  style={style.bannerImg}/>
-              
-            </section>
-        </>
+        <section style={style.section}>
+            <img src={image} alt={alt} style={style.bannerImg}/>
+        </section>
     )
 }
 
