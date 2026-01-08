@@ -7,11 +7,44 @@ h3{
     margin: 1em auto
 }
 
+.padding-corrector{
+    padding: 0 1.75em;
+}
+
+.btn-jdm{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: #CA2E2F;
+    color: white;
+    border-radius: 40px;
+    border-style: none;
+    text-decoration: none;
+    height: 3em;
+}
+
+.btn-jdm:hover{
+    background-color: white;
+    color: #CA2E2F;
+    transition: all 0.5s ease-in-out;
+    box-shadow: 0 0 0 3px #CA2E2F;
+}
+
+.text-btn-jdm{
+    font-size: 1.2em;
+    font-weight: 300;
+}
+
+.contact-btn > svg{
+    font-size: 3em;
+}
+   
 
 @media screen and (min-width: 768px) {
     main {
         max-width: 500px;
         margin: 3em auto;
+        padding: 0 1em !important;
     }
 
     .contact-btn {
@@ -20,7 +53,7 @@ h3{
     }
 
     .contact-btn:hover {
-        background-color: white !important;
-        color: #fc0102;
+        background-color: #CA2E2F !important;
+        color: white !important;
     }
 }

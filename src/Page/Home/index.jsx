@@ -9,9 +9,6 @@ import { faTiktok } from '@fortawesome/free-brands-svg-icons';
 import BtnBlock from "../../Components/BtnBlock";
 import Form from "../../Components/Form";
 import image from '../../assets/banniere ok.png';
-
-import icLogo from '../../assets/cropped-Logo-seul.png';
-import jrcfLogo from '../../assets/jrcf-logo-768x768.png';
 import { Link } from 'react-router-dom';
 
 export default function Home() {
@@ -61,12 +58,23 @@ export default function Home() {
         <>
             <Banner image={image} alt={'bannière PRCF'} />
             <main>
+                <div className='padding-corrector'>
                 <div>
                     <h2 style={style.title}>Organisation Communiste de France - Saint-Etienne</h2>
                 </div>
                 <div>
                     <h3 style={style.subtitle}>Pour reconstruire un parti communiste</h3>
                 </div>
+                 <BtnBlock>
+                      <div>
+                        <button className='contact-btn color_red' style={style.contactBtn} onClick={toggleForm}>
+                        <FontAwesomeIcon icon={faEnvelope} size='1x' />
+                    </button>
+                      </div>
+                    <Link to='https://jrcf.fr' className='btn-jdm'>
+                        <p className='text-btn-jdm'>Jeunesse du monde</p>
+                    </Link>
+                </BtnBlock>
                 <BtnBlock>
                     <Link to='https://x.com/Ocf_Loire_42?s=20' className='color_red'>
                         <FontAwesomeIcon icon={faSquareXTwitter} size='3x' />
@@ -78,20 +86,11 @@ export default function Home() {
                         <FontAwesomeIcon icon={faTiktok} size='3x' />
                     </Link>
                 </BtnBlock>
-                <BtnBlock>
-                    <Link to='https://www.initiative-communiste.fr/'>
-                        <img src={icLogo} alt="" style={style.image}/>
-                    </Link>
-                    <Link to='https://jrcf.fr'>
-                        <img src={jrcfLogo} alt="" style={style.image}/>
-                    </Link>
-                </BtnBlock>
                 <div style={style.formBtnDiv}>
-                    <button className='contact-btn color_red' style={style.contactBtn} onClick={toggleForm}>
-                        <FontAwesomeIcon icon={faEnvelope} size='1x' />
-                    </button>
+                  
                 </div>
                 <Form onClose={toggleForm} isVisible={isFormVisible} />
+                </div>
             </main>
         </>
     );
