@@ -3,6 +3,7 @@ import './Home.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareXTwitter } from '@fortawesome/free-brands-svg-icons';  
 import { faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import Banner from "../../Components/Banner";
 import { faTiktok } from '@fortawesome/free-brands-svg-icons';
 import BtnBlock from "../../Components/BtnBlock";
@@ -23,6 +24,19 @@ export default function Home() {
     const style = {
         image: {
             width: '50px',
+        },
+        title:{
+            fontSize: '1.5em',
+            fontWeight: '600',
+            textAlign: 'center',
+            color: '#CA2E2F'
+        },
+        subtitle : {
+            fontSize: '1.3em',
+            fontWeight: '400',
+            textAlign: 'center',
+            margin: '0'
+        
         },
         formBtnDiv: {
             width: '100%',
@@ -47,14 +61,20 @@ export default function Home() {
         <>
             <Banner image={image} alt={'bannière PRCF'} />
             <main>
+                <div>
+                    <h2 style={style.title}>Organisation Communiste de France - Saint-Etienne</h2>
+                </div>
+                <div>
+                    <h3 style={style.subtitle}>Pour reconstruire un parti communiste</h3>
+                </div>
                 <BtnBlock>
-                    <Link to='https://x.com/Prcf42'>
+                    <Link to='https://x.com/Prcf42' className='color_red'>
                         <FontAwesomeIcon icon={faSquareXTwitter} size='3x' />
                     </Link>
-                    <Link to='https://www.instagram.com/prcf42/'>
+                    <Link to='https://www.instagram.com/prcf42/'className='color_red'>
                         <FontAwesomeIcon icon={faInstagram} size='3x'/>
                     </Link>
-                    <Link to='https://x.com/Prcf42'>
+                    <Link to='https://x.com/Prcf42' className='color_red'>
                         <FontAwesomeIcon icon={faTiktok} size='3x' />
                     </Link>
                 </BtnBlock>
@@ -67,7 +87,9 @@ export default function Home() {
                     </Link>
                 </BtnBlock>
                 <div style={style.formBtnDiv}>
-                    <button className='contact-btn' style={style.contactBtn} onClick={toggleForm}>Contact</button>
+                    <button className='contact-btn color_red' style={style.contactBtn} onClick={toggleForm}>
+                        <FontAwesomeIcon icon={faEnvelope} size='1x' />
+                    </button>
                 </div>
                 <Form onClose={toggleForm} isVisible={isFormVisible} />
             </main>
