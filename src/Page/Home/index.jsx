@@ -68,13 +68,13 @@ export default function Home() {
                     <h3 style={style.subtitle}>Pour reconstruire un parti communiste</h3>
                 </div>
                 <BtnBlock>
-                    <Link to='https://x.com/Prcf42' className='color_red'>
+                    <Link to='https://x.com/Ocf_Loire_42?s=20' className='color_red'>
                         <FontAwesomeIcon icon={faSquareXTwitter} size='3x' />
                     </Link>
-                    <Link to='https://www.instagram.com/prcf42/'className='color_red'>
+                    <Link to='https://www.instagram.com/ocf.42?igsh=MW82dXRoMTk1aHI4NQ=='className='color_red'>
                         <FontAwesomeIcon icon={faInstagram} size='3x'/>
                     </Link>
-                    <Link to='https://x.com/Prcf42' className='color_red'>
+                    <Link to='https://www.tiktok.com/@.ocf42?_r=1&_t=ZN-92uPF6LAef8' className='color_red'>
                         <FontAwesomeIcon icon={faTiktok} size='3x' />
                     </Link>
                 </BtnBlock>
