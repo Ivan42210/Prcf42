@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import './Home.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import Banner from "../../Components/Banner";
 import BtnBlock from "../../Components/BtnBlock";
 import Form from "../../Components/Form";
-import image from '../../assets/bannière.png';
+import image from '../../assets/banniere ok.png';
 import logo from '../../assets/prcf42.png';
 import icLogo from '../../assets/cropped-Logo-seul.png';
 import jrcfLogo from '../../assets/jrcf-logo-768x768.png';

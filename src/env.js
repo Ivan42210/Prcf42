@@ -1,1 +1,1 @@
-export const API_URL = 'https://prcf42formbackend.netlify.app';
+export const API_URL = 'https://formbackend.netlify.app';
