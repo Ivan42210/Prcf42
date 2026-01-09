@@ -3,7 +3,6 @@
         opacity: 0;
         transform: translateY(-20px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
@@ -15,7 +14,6 @@
         opacity: 1;
         transform: translateY(0);
     }
-
     to {
         opacity: 0;
         transform: translateY(-20px);
@@ -23,7 +21,7 @@
 }
 
 .form_section {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
@@ -31,23 +29,61 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: hwb(0 0% 100% / 0.468);
+    background-color: rgba(0, 0, 0, 0.7);
     animation: fadeIn 0.5s forwards;
+    z-index: 1000;
 }
 
 .form_section.hidden {
     animation: fadeOut 0.5s forwards;
 }
 
-.form_section>svg {
-    width: 30px;
+.form_container {
+    position: relative;
+    width: 75%;
+    max-width: 500px;
+}
+
+/* Message de statut */
+.form_status {
     position: absolute;
-    top: 1em;
-    right: 1em;
+    top: -70px;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 500;
+    z-index: 100;
+    animation: slideDown 0.3s ease-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form_status_success {
+    background-color: #28a745;
+    color: white;
+    border: 1px solid #218838;
+}
+
+.form_status_error {
+    background-color: #dc3545;
+    color: white;
+    border: 1px solid #c82333;
 }
 
 form {
-    width: 75%;
+    width: 100%;
     background-color: #CA2E2F;
     padding: 2em;
     border-radius: 10px;
@@ -62,13 +98,35 @@ form {
     gap: 1em;
 }
 
+/* Groupes de formulaire */
+.form_group {
+    width: 100%;
+    position: relative;
+}
+
 input[type="text"],
 input[type="email"] {
-    width: 100% !important;
-    padding: 10px;
+    width: 100%;
+    padding: 12px;
     border-radius: 10px;
-    border-style: none;
-    color: black;
+    border: 2px solid transparent;
+    color: #333;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+    outline: none;
+    border-color: white;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+/* Input avec erreur */
+.input_error {
+    border-color: #ff6b6b !important;
+    background-color: rgba(255, 107, 107, 0.1);
 }
 
 .choice_area {
@@ -77,40 +135,145 @@ input[type="email"] {
     width: 100%;
 }
 
+/* Options radio */
+.radio_option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.radio_option label {
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.radio_option input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.radio_option input[type="radio"]:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.radio_option input[type="radio"]:disabled + label {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
 textarea {
-    width: 100% !important;
-    padding: 10px;
+    width: 100%;
+    padding: 12px;
     border-radius: 10px;
-    border-style: none;
-    color: black;
+    border: 2px solid transparent;
+    color: #333;
+    font-size: 16px;
+    min-height: 120px;
+    resize: vertical;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: white;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
 }
 
 .send_btn {
     width: 50%;
     margin: 1em auto;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 18px;
     background: transparent;
     box-shadow: 0 0 0 3px white;
-    padding: 10px;
+    padding: 12px;
     border-radius: 40px;
-    border-style: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.send_btn:hover:not(:disabled) {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.send_btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.send_btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Animation de chargement */
+@keyframes spin {
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.send_btn:disabled::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid white;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
 }
 
 .error {
-    color: white;
+    color: #ffdddd;
     font-size: 0.875em;
-    margin-top: -0.5em;
-    margin-bottom: 0.5em;
+    margin-top: 5px;
+    margin-bottom: 0;
+    text-align: left;
+    width: 100%;
+    padding-left: 5px;
 }
 
 .close_btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
     cursor: pointer;
-    font-size: 1.5em;
-    color: #000;
+    font-size: 1.8em;
+    color: white;
+    transition: all 0.3s ease;
+    z-index: 1001;
 }
 
+.close_btn:hover {
+    color: #ffd700;
+    transform: scale(1.1);
+}
 
+.close_btn:active {
+    transform: scale(0.95);
+}
+
+/* États désactivés */
+input:disabled,
+textarea:disabled {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #666;
+    cursor: not-allowed;
+}
+
+/* Responsive */
 @media screen and (min-width: 768px) {
     form {
         max-width: 500px;
@@ -122,9 +285,45 @@ textarea {
 
     .choice_area {
         justify-content: start;
-        gap: 1em;
+        gap: 2em;
     }
 
-   
-    
+    .form_status {
+        top: -80px;
+        padding: 15px 20px;
+        font-size: 1.1em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .form_container {
+        width: 90%;
+    }
+
+    form {
+        padding: 1.5em;
+    }
+
+    .choice_area {
+        flex-direction: column;
+        gap: 0.5em;
+        align-items: flex-start;
+    }
+
+    .send_btn {
+        width: 70%;
+        font-size: 16px;
+    }
+
+    .form_status {
+        top: -60px;
+        padding: 12px;
+        font-size: 0.9em;
+    }
+
+    .close_btn {
+        top: 15px;
+        right: 15px;
+        font-size: 1.5em;
+    }
 }
