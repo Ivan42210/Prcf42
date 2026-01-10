@@ -77,10 +77,10 @@ export default function Home() {
     <Link to='https://x.com/Ocf_Loire_42?s=20' className='color_red text-size'>
         <FontAwesomeIcon icon={faSquareXTwitter} size='3x' />
     </Link>
-    <Link to='https://www.instagram.com/ocf.42?igsh=MW82dXRoMTk1aHI4NQ==' className='color_red text-size'>
+    <Link to='https://www.instagram.com/ocf.42?' className='color_red text-size'>
         <FontAwesomeIcon icon={faInstagram} size='3x'/>
     </Link>
-    <Link to='https://www.tiktok.com/@.ocf42?_r=1&_t=ZN-92uPF6LAef8' className='color_red text-size'>
+    <Link to='https://www.tiktok.com/@.ocf42' className='color_red text-size'>
         <FontAwesomeIcon icon={faTiktok} size='3x' />
     </Link>
 </BtnBlock>
