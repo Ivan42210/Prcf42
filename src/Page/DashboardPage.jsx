@@ -165,7 +165,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Graphique + sélecteur de période */}
-        <div className="chart-section">
+        <section className="chart-section">
           <div className="chart-header">
             <h2 className="chart-title">Évolution des scans</h2>
             <div className="period-selector">
@@ -181,10 +181,10 @@ export default function DashboardPage() {
             </div>
           </div>
           <ScanChart data={stats?.[period]} xKey={currentPeriod?.xKey} />
-        </div>
+        </section>
 
         {/* Historique récent */}
-        <div className="recent-section">
+        <section className="recent-section">
           <h2 className="recent-title">Historique récent</h2>
           {!stats?.recent?.length ? (
             <p className="no-data">Aucun scan enregistré.</p>
@@ -208,7 +208,7 @@ export default function DashboardPage() {
               ))}
             </div>
           )}
-        </div>
+        </section>
       </main>
     </div>
   );
