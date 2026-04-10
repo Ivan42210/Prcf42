@@ -1,0 +1,262 @@
+/* DashboardPage.css */
+.dashboard-container {
+    min-height: 100vh;
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+}
+
+.dashboard-header {
+    background-color: white;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dashboard-title {
+    font-size: 1.25em;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+
+.dashboard-subtitle {
+    font-size: 0.75em;
+    color: #999;
+    margin: 0.5em 0 0 0;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 0.5em;
+}
+
+.btn-refresh, .btn-logout {
+    font-size: 0.875em;
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-refresh {
+    color: #666;
+    background-color: transparent;
+}
+
+.btn-refresh:hover {
+    color: #333;
+    background-color: #f0f0f0;
+}
+
+.btn-refresh:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.btn-logout {
+    color: #CA2E2F;
+    background-color: transparent;
+}
+
+.btn-logout:hover {
+    color: white;
+    background-color: #CA2E2F;
+}
+
+.dashboard-main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2em 1em;
+}
+
+.error-message {
+    background-color: #ffe6e6;
+    color: #CA2E2F;
+    border-radius: 0.75em;
+    padding: 1em;
+    font-size: 0.875em;
+    text-align: center;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1em;
+    margin-bottom: 2em;
+}
+
+.stat-card {
+    background-color: white;
+    border-radius: 0.75em;
+    border: 1px solid #e0e0e0;
+    padding: 1.25em;
+}
+
+.stat-label {
+    font-size: 0.75em;
+    color: #999;
+    margin-bottom: 0.25em;
+}
+
+.stat-value {
+    font-size: 2em;
+    font-weight: 600;
+    color: #CA2E2F;
+    margin: 0;
+}
+
+.stat-sub {
+    font-size: 0.75em;
+    color: #999;
+    margin-top: 0.25em;
+}
+
+.chart-section {
+    background-color: white;
+    border-radius: 0.75em;
+    border: 1px solid #e0e0e0;
+    padding: 1.25em;
+    margin-bottom: 2em;
+}
+
+.chart-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1em;
+    flex-wrap: wrap;
+    gap: 0.5em;
+}
+
+.chart-title {
+    font-size: 0.875em;
+    font-weight: 500;
+    color: #666;
+    margin: 0;
+}
+
+.period-selector {
+    display: flex;
+    gap: 0.25em;
+    background-color: #f0f0f0;
+    border-radius: 0.5em;
+    padding: 0.25em;
+}
+
+.period-btn {
+    font-size: 0.75em;
+    padding: 0.5em 1em;
+    border-radius: 0.375em;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: transparent;
+    color: #666;
+}
+
+.period-btn:hover {
+    color: #333;
+}
+
+.period-btn.active {
+    background-color: white;
+    color: #CA2E2F;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    font-weight: 500;
+}
+
+.recent-section {
+    background-color: white;
+    border-radius: 0.75em;
+    border: 1px solid #e0e0e0;
+    padding: 1.25em;
+}
+
+.recent-title {
+    font-size: 0.875em;
+    font-weight: 500;
+    color: #666;
+    margin: 0 0 1em 0;
+}
+
+.no-data {
+    font-size: 0.875em;
+    color: #999;
+    text-align: center;
+    margin: 2em 0;
+}
+
+.recent-list {
+    max-height: 18em;
+    overflow-y: auto;
+    border-top: 1px solid #f0f0f0;
+}
+
+.recent-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75em 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.recent-item:last-child {
+    border-bottom: none;
+}
+
+.recent-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75em;
+}
+
+.dot {
+    width: 0.5em;
+    height: 0.5em;
+    border-radius: 50%;
+    background-color: #CA2E2F;
+    flex-shrink: 0;
+}
+
+.recent-name {
+    font-size: 0.875em;
+    color: #333;
+}
+
+.recent-time {
+    font-size: 0.75em;
+    color: #999;
+}
+
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-size: 0.875em;
+    color: #999;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .dashboard-main {
+        padding: 1em 0.5em;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .chart-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .period-selector {
+        width: 100%;
+        justify-content: center;
+    }
+}
