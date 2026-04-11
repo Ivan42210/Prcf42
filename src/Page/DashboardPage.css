@@ -260,3 +260,34 @@
         justify-content: center;
     }
 }
+
+.btn-export {
+  background: transparent;
+  border: 1px solid #2d7a2d;
+  color: #2d7a2d;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.btn-export:hover {
+  background: #f0fff0;
+}
+
+.btn-export:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.recent-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.recent-count {
+  font-size: 0.75rem;
+  color: #999;
+}

@@ -5,6 +5,7 @@ import {
   BarChart, Bar, XAxis, YAxis, Tooltip,
   ResponsiveContainer, CartesianGrid,
 } from "recharts";
+import * as XLSX from "xlsx";
 import "./DashboardPage.css";
 
 const SESSION_KEY = "admin_session";
@@ -65,6 +66,45 @@ function ScanChart({ data, xKey }) {
   );
 }
 
+// ── Export Excel ──────────────────────────────────────────────────────────────
+function exportToExcel(stats) {
+  const wb = XLSX.utils.book_new();
+
+  // Onglet 1 : Historique brut
+  const historiqueData = (stats.recent || []).map((s) => ({
+    "Date":     new Date(s.created_at).toLocaleDateString("fr-FR"),
+    "Heure":    new Date(s.created_at).toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" }),
+    "Visiteur": s.visitor_name || "Anonyme",
+  }));
+  const ws1 = XLSX.utils.json_to_sheet(
+    historiqueData.length ? historiqueData : [{ "Date": "", "Heure": "", "Visiteur": "" }]
+  );
+  ws1["!cols"] = [{ wch: 14 }, { wch: 10 }, { wch: 24 }];
+  XLSX.utils.book_append_sheet(wb, ws1, "Historique");
+
+  // Onglet 2 : Statistiques résumées
+  const statsData = [
+    { "Période": "Total scans",            "Scans": stats.total ?? 0 },
+    { "Période": "Aujourd'hui",            "Scans": stats.today ?? 0 },
+    { "Période": "",                       "Scans": "" },
+    { "Période": "--- Par jour (30j) ---", "Scans": "" },
+    ...(stats.byDay   || []).map((r) => ({ "Période": r.day,   "Scans": r.count })),
+    { "Période": "",                       "Scans": "" },
+    { "Période": "--- Par semaine ---",    "Scans": "" },
+    ...(stats.byWeek  || []).map((r) => ({ "Période": r.week,  "Scans": r.count })),
+    { "Période": "",                       "Scans": "" },
+    { "Période": "--- Par mois ---",       "Scans": "" },
+    ...(stats.byMonth || []).map((r) => ({ "Période": r.month, "Scans": r.count })),
+  ];
+  const ws2 = XLSX.utils.json_to_sheet(statsData);
+  ws2["!cols"] = [{ wch: 28 }, { wch: 10 }];
+  XLSX.utils.book_append_sheet(wb, ws2, "Statistiques");
+
+  const date = new Date().toLocaleDateString("fr-FR").replace(/\//g, "-");
+  XLSX.writeFile(wb, `scans-qr-${date}.xlsx`);
+}
+
+// ── Page principale ───────────────────────────────────────────────────────────
 export default function DashboardPage() {
   const navigate = useNavigate();
   const [stats, setStats]           = useState(null);
@@ -72,6 +112,7 @@ export default function DashboardPage() {
   const [error, setError]           = useState("");
   const [period, setPeriod]         = useState("byDay");
   const [refreshing, setRefreshing] = useState(false);
+  const [exporting, setExporting]   = useState(false);
 
   useEffect(() => {
     if (!getSession()) navigate("/login");
@@ -103,12 +144,18 @@ export default function DashboardPage() {
     navigate("/login");
   };
 
+  const handleExport = () => {
+    if (!stats) return;
+    setExporting(true);
+    try {
+      exportToExcel(stats);
+    } finally {
+      setExporting(false);
+    }
+  };
+
   if (loading) {
-    return (
-      <div className="loading">
-        Chargement…
-      </div>
-    );
+    return <div className="loading">Chargement…</div>;
   }
 
   const currentPeriod = PERIODS.find((p) => p.key === period);
@@ -124,25 +171,20 @@ export default function DashboardPage() {
           <p className="dashboard-subtitle">Statistiques de scans QR code</p>
         </div>
         <div className="header-buttons">
-          <button
-            onClick={fetchStats} disabled={refreshing}
-            className="btn-refresh"
-          >
+          <button onClick={fetchStats} disabled={refreshing} className="btn-refresh">
             {refreshing ? "…" : "↻ Actualiser"}
           </button>
-          <button
-            onClick={handleLogout}
-            className="btn-logout"
-          >
+          <button onClick={handleExport} disabled={exporting || !stats} className="btn-export">
+            {exporting ? "Export…" : "↓ Export Excel"}
+          </button>
+          <button onClick={handleLogout} className="btn-logout">
             Déconnexion
           </button>
         </div>
       </header>
 
       <main className="dashboard-main">
-        {error && (
-          <div className="error-message">{error}</div>
-        )}
+        {error && <div className="error-message">{error}</div>}
 
         {/* Cartes de stat */}
         <div className="stats-grid">
@@ -152,11 +194,7 @@ export default function DashboardPage() {
             value={stats?.today}
             sub={new Date().toLocaleDateString("fr-FR")}
           />
-          <StatCard
-            label="Cette semaine"
-            value={thisWeek}
-            sub="7 derniers jours"
-          />
+          <StatCard label="Cette semaine" value={thisWeek} sub="7 derniers jours" />
           <StatCard
             label="Ce mois"
             value={thisMonth}
@@ -173,7 +211,7 @@ export default function DashboardPage() {
                 <button
                   key={p.key}
                   onClick={() => setPeriod(p.key)}
-                  className={`period-btn ${period === p.key ? 'active' : ''}`}
+                  className={`period-btn ${period === p.key ? "active" : ""}`}
                 >
                   {p.label}
                 </button>
@@ -185,7 +223,10 @@ export default function DashboardPage() {
 
         {/* Historique récent */}
         <section className="recent-section">
-          <h2 className="recent-title">Historique récent</h2>
+          <div className="recent-header">
+            <h2 className="recent-title">Historique récent</h2>
+            <span className="recent-count">{stats?.recent?.length ?? 0} entrées</span>
+          </div>
           {!stats?.recent?.length ? (
             <p className="no-data">Aucun scan enregistré.</p>
           ) : (
