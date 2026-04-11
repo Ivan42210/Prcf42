@@ -1,11 +1,11 @@
-import { createClient } from "@supabase/supabase-js";
+const { createClient } = require("@supabase/supabase-js");
 
 const db = createClient(
   process.env.SUPABASE_URL,
   process.env.SUPABASE_SERVICE_KEY
 );
 
-export const handler = async (event) => {
+exports.handler = async (event) => {
   const token = (event.headers["authorization"] || "").replace("Bearer ", "");
   if (token !== process.env.ADMIN_PASSWORD) {
     return { statusCode: 401, body: JSON.stringify({ error: "Non autorisé" }) };
@@ -67,6 +67,7 @@ export const handler = async (event) => {
       body: JSON.stringify({ total, today, byDay: formattedByDay, byWeek: formattedByWeek, byMonth: formattedByMonth, recent }),
     };
   } catch (err) {
-    return { statusCode: 500, body: JSON.stringify({ error: err.message }) };
+    console.error("Error in get-stats:", err);
+    return { statusCode: 500, body: JSON.stringify({ error: err.message || "Unknown error" }) };
   }
 };
