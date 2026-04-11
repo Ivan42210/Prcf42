@@ -1,11 +1,11 @@
-const { createClient } = require("@supabase/supabase-js");
+import { createClient } from "@supabase/supabase-js";
 
 const db = createClient(
   process.env.SUPABASE_URL,
   process.env.SUPABASE_SERVICE_KEY
 );
 
-exports.handler = async (event) => {
+export const handler = async (event) => {
   const token = (event.headers["authorization"] || "").replace("Bearer ", "");
   if (token !== process.env.ADMIN_PASSWORD) {
     return { statusCode: 401, body: JSON.stringify({ error: "Non autorisé" }) };
