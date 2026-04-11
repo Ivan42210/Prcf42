@@ -72,7 +72,6 @@ export const handler = async (event) => {
     return { statusCode: 500, body: JSON.stringify({ error: err.message || "Unknown error" }) };
   }
 };
-const { createClient } = require("@supabase/supabase-js");
 
 const db = createClient(
   process.env.SUPABASE_URL,
