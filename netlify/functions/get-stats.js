@@ -1,9 +1,16 @@
 import { createClient } from "@supabase/supabase-js";
 
-const db = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_KEY
-);
+function createDb() {
+  const supabaseUrl = (process.env.SUPABASE_URL || "").trim();
+  const supabaseKey = (process.env.SUPABASE_SERVICE_KEY || "").trim();
+  if (!supabaseUrl || !supabaseKey) {
+    throw new Error("Supabase environment variables are missing.");
+  }
+  if (!/^https?:\/\//.test(supabaseUrl)) {
+    throw new Error("Invalid SUPABASE_URL: must start with http:// or https://");
+  }
+  return createClient(supabaseUrl, supabaseKey);
+}
 
 export const handler = async (event) => {
   const token = (event.headers?.authorization || "").replace("Bearer ", "");
@@ -12,6 +19,7 @@ export const handler = async (event) => {
   }
 
   try {
+    const db = createDb();
     const { count: total, error: totalError } = await db
       .from("scans")
       .select("*", { count: "exact", head: true });
