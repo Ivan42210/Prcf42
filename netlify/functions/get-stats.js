@@ -1,8 +1,16 @@
 import { createClient } from "@supabase/supabase-js";
 
+function normalizeEnvVar(value) {
+  let result = (value || "").trim();
+  if ((result.startsWith("'") && result.endsWith("'")) || (result.startsWith('"') && result.endsWith('"'))) {
+    result = result.slice(1, -1).trim();
+  }
+  return result;
+}
+
 function createDb() {
-  const supabaseUrl = (process.env.SUPABASE_URL || "").trim();
-  const supabaseKey = (process.env.SUPABASE_SERVICE_KEY || "").trim();
+  const supabaseUrl = normalizeEnvVar(process.env.SUPABASE_URL);
+  const supabaseKey = normalizeEnvVar(process.env.SUPABASE_SERVICE_KEY);
   if (!supabaseUrl || !supabaseKey) {
     throw new Error("Supabase environment variables are missing.");
   }
