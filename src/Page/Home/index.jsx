@@ -8,7 +8,7 @@ import Banner from "../../Components/Banner";
 import { faTiktok } from '@fortawesome/free-brands-svg-icons';
 import BtnBlock from "../../Components/BtnBlock";
 import Form from "../../Components/Form";
-import image from '../../assets/banniere ok.png';
+import image from '../../assets/Banniere X.png';
 import { Link } from 'react-router-dom';
 
 export default function Home() {
