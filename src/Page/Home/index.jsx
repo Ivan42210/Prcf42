@@ -14,7 +14,9 @@ import { Link } from 'react-router-dom';
 export default function Home() {
     const [isFormVisible, setFormVisible] = useState(false);
 
-     
+
+// Dans Home.jsx, remplacez votre useEffect par celui-ci :
+ 
 useEffect(() => {
     // On enregistre uniquement si l'URL contient ?src=qr
     const params = new URLSearchParams(window.location.search);
