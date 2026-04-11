@@ -3,16 +3,14 @@ import './Routing.css'
 import Home from '../Page/Home'
 import LoginPage from '../Page/LoginPage'
 import DashboardPage from '../Page/DashboardPage'
-import { ProtectedRoute } from '../components/ProtectedRoute'
-
+import { ProtectedRoute } from '../Components/ProtectedRoute'
+ 
 export default function Routing() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-
         <Route path="/login" element={<LoginPage />} />
-
         <Route
           path="/dashboard"
           element={
@@ -25,3 +23,4 @@ export default function Routing() {
     </Router>
   )
 }
+ 
