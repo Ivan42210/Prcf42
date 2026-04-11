@@ -14,24 +14,33 @@ import { Link } from 'react-router-dom';
 export default function Home() {
     const [isFormVisible, setFormVisible] = useState(false);
 
-    // Enregistrer un scan quand l'utilisateur arrive sur la page
-    useEffect(() => {
-        const recordScan = async () => {
-            try {
-                await fetch('/.netlify/functions/record-scan', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        visitor_name: null,
-                        metadata: { source: 'home_page_visit', timestamp: new Date().toISOString() }
-                    }),
-                });
-            } catch (err) {
-                console.error('Erreur lors de l\'enregistrement du scan:', err);
-            }
-        };
-        recordScan();
-    }, []);
+     
+useEffect(() => {
+    // On enregistre uniquement si l'URL contient ?src=qr
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('src') !== 'qr') return;
+ 
+    const recordScan = async () => {
+        try {
+            await fetch('/.netlify/functions/record-scan', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    visitor_name: null,
+                    metadata: {
+                        source: 'qr_code',
+                        timestamp: new Date().toISOString()
+                    }
+                }),
+            });
+        } catch (err) {
+            console.error('Erreur enregistrement scan:', err);
+        }
+    };
+ 
+    recordScan();
+}, []);
+ 
 
     const toggleForm = () => {
         setFormVisible(!isFormVisible);
