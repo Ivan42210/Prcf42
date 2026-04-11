@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import  { useState, useEffect } from 'react';
 import './Home.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareXTwitter } from '@fortawesome/free-brands-svg-icons';  
@@ -13,6 +13,25 @@ import { Link } from 'react-router-dom';
 
 export default function Home() {
     const [isFormVisible, setFormVisible] = useState(false);
+
+    // Enregistrer un scan quand l'utilisateur arrive sur la page
+    useEffect(() => {
+        const recordScan = async () => {
+            try {
+                await fetch('/.netlify/functions/record-scan', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        visitor_name: null,
+                        metadata: { source: 'home_page_visit', timestamp: new Date().toISOString() }
+                    }),
+                });
+            } catch (err) {
+                console.error('Erreur lors de l\'enregistrement du scan:', err);
+            }
+        };
+        recordScan();
+    }, []);
 
     const toggleForm = () => {
         setFormVisible(!isFormVisible);
